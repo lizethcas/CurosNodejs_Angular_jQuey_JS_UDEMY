@@ -3,20 +3,15 @@
 var express =require ('express')
 var bodyParser = require ('body-parser');
 
-var app =express();
 
+var app =express();
+var project_routes = require ("./routes/project")
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
 //rutas
+app.use("/api",project_routes);
 
-app.get("/prueba", (req,res) =>{
-   res.status(200).send({
-       mesagge: "Hola mundo desde API de NodeJS"
-   })
-})
-
-
-
+//exportar variable app
 module.exports = app;
